@@ -11,13 +11,30 @@ import {
 const ApplicationTracker = () => {
   const [companyName, setCompanyName] = useState("");
   const [dateApplied, setDateApplied] = useState("");
-  const [applications, setApplications] = useState([]);
-
+  const [applications, setApplications] = useState([
+    {
+      companyName: "Warp",
+      dateApplied: "2023-02-25", // Example date
+    },
+    {
+      companyName: "BerriAI",
+      dateApplied: "2023-02-25", // Example date
+    },
+    {
+      companyName: "SpecCheck",
+      dateApplied: "2023-02-25",
+    },
+  ]);
   const handleAddApplication = () => {
     if (companyName && dateApplied) {
-      setApplications([...applications, { companyName, dateApplied }]);
+      setApplications([
+        ...applications,
+        { companyName, dateApplied, email, description },
+      ]);
       setCompanyName("");
       setDateApplied("");
+      setEmail("");
+      setDescription("");
     }
   };
 

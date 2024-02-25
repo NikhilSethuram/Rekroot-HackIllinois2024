@@ -1,0 +1,82 @@
+[
+  {
+    "company_name": "Warp",
+    "first_name": "Ayush",
+    "last_name": "Sharma",
+    "location": "New York",
+    "long_description": "Warp makes it easy for founders to hire, onboard, and pay their employees in all 50 US states. We handle compliance that existing solutions don't, saving hundreds of hours of admin work for founders per year.",
+    "email": "ayush@joinwarp.com"
+  },
+  {
+    "company_name": "SpeedyBrand",
+    "first_name": "Jatin",
+    "last_name": "Mehta",
+    "location": "Remote",
+    "long_description": "SpeedyBrand provides SMBs with generative-AI powered marketing content that is effective and affordable. We achieve this by training custom AI models for individual businesses to create hyper-personalized marketing content that gets them more business leads.",
+    "email": "jatin@speedybrand.io"
+  },
+  {
+    "company_name": "BerriAI",
+    "first_name": "Krrish",
+    "last_name": "Dholakia",
+    "location": "San Francisco",
+    "long_description": "Stop OpenAI Errors in 1 line of code from reliablegpt. reliableGPT wraps the create endpoint, and handles any errors thrown by OpenAI.",
+    "email": "krrish@berri.ai"
+  },
+  {
+    "company_name": "SpecCheck",
+    "first_name": "Joe",
+    "last_name": "DeMaria",
+    "location": "Los Angeles, CA",
+    "long_description": "SpecCheck is an all-in-one solution that provides accurate prescription eyewear ordering and tracking, seamless billing, and streamlined communication between patients, eye doctors, and their lab partners.",
+    "email": "joe@speccheckrx.com"
+  },
+  {
+    "company_name": "Pierre",
+    "first_name": "Jacob",
+    "last_name": "Thornton",
+    "location": "San Francisco",
+    "long_description": "Pierre enables engineers, designers and business team members to discuss new features before they're merged.",
+    "email": "jacob@heypierre.app"
+  },
+  {
+    "company_name": "Upfront",
+    "first_name": "Thomas",
+    "last_name": "Stephens",
+    "location": "Remote",
+    "long_description": "Upfront helps merchants that sell clean energy products by turning billions of dollars of rebates into dramatically lower prices at checkout.",
+    "email": "thomas@knowupfront.com"
+  },
+  {
+    "company_name": "Apollo Group",
+    "first_name": "Usman",
+    "last_name": "Gul",
+    "location": "Remote",
+    "long_description": "Apollo is a managed marketplace for back-office services. For basic back-office services like lead generation or financial models, our platform gets the work in a manner that is cheaper, faster and higher quality than would be the case with freelancers on Upwork.",
+    "email": "usman@apollo-group.io"
+  },
+  {
+    "company_name": "Jaldi",
+    "first_name": "Sunny",
+    "last_name": "Singh",
+    "location": "New York",
+    "long_description": "Jaldi is the online supermarket for South Asians living in the US. We deliver thousands of South Asian grocery, beauty, and household products right to customers’ doors through nationwide and same-day local delivery.",
+    "email": "sunny@getjaldi.com"
+  },
+  {
+    "company_name": "Atri Labs",
+    "first_name": "Darshita",
+    "last_name": "Chaturvedi",
+    "location": "San Francisco",
+    "long_description": "Atri Labs is Vercel for Python developers. We are an open-source web framework that helps Python developers create production web applications.",
+    "email": "darshita.chaturvedi@atrilabs.com"
+  },
+  {
+    "company_name": "Meru",
+    "first_name": "Rohan",
+    "last_name": "Arora",
+    "location": "San Francisco",
+    "long_description": "At Meru, we help developers build custom, task-specific LLMs that work just as well as ChatGPT, but run up to 40x faster, run on commodity CPU hardware, and can be deployed on premise.",
+    "email": "rohan@usemeru.com"
+  }
+]

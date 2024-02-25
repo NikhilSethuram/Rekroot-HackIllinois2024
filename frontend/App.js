@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; // Correct import statement
+import React, { useState } from "react"; // Correct import statement
 import {
   StyleSheet,
   Text,
@@ -21,8 +21,8 @@ import SwipesScreen from "./components/SwipeScreen";
 // SignInScreen Component
 const SignInScreen = ({ navigation }) => {
   // State for username and password
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
@@ -33,8 +33,10 @@ const SignInScreen = ({ navigation }) => {
         end={{ x: -0.2, y: 0.1 }}
       >
         <Text style={styles.welcomeText}>welcome to rekroot</Text>
-        <Text style={styles.welcomeSubtitle}>your next internship is now just a swipe away!</Text>
-        
+        <Text style={styles.welcomeSubtitle}>
+          your next internship is now just a swipe away!
+        </Text>
+
         <TextInput
           style={styles.input}
           placeholder="Username"
@@ -42,7 +44,7 @@ const SignInScreen = ({ navigation }) => {
           value={username}
           onChangeText={setUsername}
         />
-        
+
         <TextInput
           style={styles.input}
           placeholder="Password"
@@ -64,7 +66,9 @@ const SignInScreen = ({ navigation }) => {
               }, 500);
             }}
           >
-            <Text style={styles.buttonText}>perfect, click here to get started</Text>
+            <Text style={styles.buttonText}>
+              perfect, click here to get started
+            </Text>
           </TouchableOpacity>
         </View>
       </LinearGradient>
@@ -78,14 +82,14 @@ const UploadResumeScreen = ({ navigation }) => {
     const result = await DocumentPicker.getDocumentAsync({
       type: "application/pdf",
       multiple: false,
-      copyToCacheDirectory: true
+      copyToCacheDirectory: true,
     });
     if (!result.cancelled) {
-      Alert.alert('File Uploaded', result.assets[0].name);
-      navigation.navigate("JobInterests")
+      Alert.alert("File Uploaded", result.assets[0].name);
+      navigation.navigate("JobInterests");
     } else {
       setTimeout(() => {
-        Alert.alert('Document picked', JSON.stringify(result, null, 2));
+        Alert.alert("Document picked", JSON.stringify(result, null, 2));
       }, 100);
     }
   };
@@ -257,45 +261,45 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   gradient: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   welcomeText: {
     fontSize: 30,
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
   },
   welcomeSubtitle: {
-    color: 'white',
+    color: "white",
     paddingBottom: 30,
-    fontWeight: '500'
+    fontWeight: "500",
   },
   input: {
-    width: '80%',
-    backgroundColor: 'white',
+    width: "80%",
+    backgroundColor: "white",
     padding: 15,
     marginBottom: 10,
     borderRadius: 5,
   },
   button: {
-    backgroundColor: '#FF6347',
+    backgroundColor: "#FF6347",
     padding: 15,
     borderRadius: 5,
   },
   buttonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
   },
   signInFooter: {
     marginTop: 20,
   },
   termsText: {
-    color: 'white',
+    color: "white",
     marginTop: 10,
   },
   confirmButtonText: {

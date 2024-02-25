@@ -4,20 +4,20 @@ import Swipeable from "react-native-gesture-handler/Swipeable";
 import { RectButton } from "react-native-gesture-handler";
 import SwipeableImage from "./SwipeableImage";
 
-function Swipes({ users, currentIndex, handleLike, handlePass, swipesRef }) {
+function Swipes({ jobs, currentIndex, handleLike, handlePass, swipesRef }) {
   const [willLike, setWillLike] = useState(false);
   const [willPass, setWillPass] = useState(false);
   const renderLeftActions = () => {
     return (
       <RectButton style={styles.container}>
-        <SwipeableImage user={users[currentIndex + 1]}></SwipeableImage>
+        <SwipeableImage job={jobs[currentIndex + 1]}></SwipeableImage>
       </RectButton>
     );
   };
   const renderRightActions = () => {
     return (
       <RectButton style={styles.container}>
-        <SwipeableImage user={users[currentIndex + 1]}></SwipeableImage>
+        <SwipeableImage job={jobs[currentIndex + 1]}></SwipeableImage>
       </RectButton>
     );
   };
@@ -32,7 +32,7 @@ function Swipes({ users, currentIndex, handleLike, handlePass, swipesRef }) {
       renderRightActions={renderRightActions}
       onSwipeableLeftOpen={() => {
         setWillLike(false);
-        handleLike();
+        handleLike(jobs[currentIndex]);
       }}
       onSwipeableRightOpen={() => {
         setWillPass(false);
@@ -42,7 +42,7 @@ function Swipes({ users, currentIndex, handleLike, handlePass, swipesRef }) {
       onSwipeableRightWillOpen={() => setWillPass(true)}
     >
       <SwipeableImage
-        user={users[currentIndex]}
+        job={jobs[currentIndex]}
         willLike={willLike}
         willPass={willPass}
       />

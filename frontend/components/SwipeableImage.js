@@ -1,11 +1,11 @@
 import React from "react";
-import { View, Image, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
-export default function SwipeableImage({ user, willLike, willPass }) {
+export default function SwipeableImage({ job, willLike, willPass }) {
   return (
-    <View>
-      <Image source={{ uri: user.picture.large }} style={styles.photo} />
+    <LinearGradient colors={["#13294B", "#2185C5"]} style={styles.card}>
       {willLike && (
         <View style={styles.likeBox}>
           <Text style={{ ...styles.textPrimary, color: "#64EDCC" }}>LIKE</Text>
@@ -17,22 +17,20 @@ export default function SwipeableImage({ user, willLike, willPass }) {
         </View>
       )}
       <View style={styles.textContainer}>
-        <View style={styles.textRow}>
-          <Text style={[styles.textPrimary, styles.textShadow]}>
-            {user.name.first}
-          </Text>
-          <Text style={[styles.textSecondary, styles.textShadow]}>
-            {user.dob.age}
-          </Text>
-        </View>
-        <View style={styles.textRow}>
-          <FontAwesome name="map-marker" size={20} color="white"></FontAwesome>
-          <Text style={[styles.textSecondary, styles.textShadow]}>
-            {user.location.city}
-          </Text>
-        </View>
+        <Text style={[styles.textPrimary, styles.textShadow]}>
+          {job.company_name}
+        </Text>
+        <Text style={[styles.textSecondary, styles.textShadow, styles.email]}>
+          {job.email}
+        </Text>
+        <Text style={[styles.textSecondary, styles.textShadow]}>
+          {job.long_description}
+        </Text>
+        <Text style={[styles.textSecondary, styles.textShadow]}>
+          Location: {job.location}
+        </Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -48,6 +46,21 @@ const boxStyle = {
 };
 
 const styles = StyleSheet.create({
+  card: {
+    color: "white",
+    height: "100%",
+    borderRadius: 20,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 20,
+  },
+  gradient: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+  },
   likeBox: {
     ...boxStyle,
     left: 40,
@@ -58,33 +71,26 @@ const styles = StyleSheet.create({
     right: 40,
     borderColor: "#F06795",
   },
-  photo: {
-    height: "100%",
-    resizeMode: "cover",
-    borderRadius: 20,
-  },
   textContainer: {
-    position: "absolute",
-    bottom: 20,
-    left: 20,
-  },
-  textRow: {
-    flexDirection: "row",
+    color: "white",
     alignItems: "center",
   },
   textPrimary: {
     color: "white",
-    fontSize: 35,
+    //color: "black",
+    fontSize: 30, // Adjust size as needed
     fontWeight: "bold",
+    //alignSelf: "flex-start", // Align self to the start of the flex container
+    marginBottom: 100, // Add space below the company name
   },
   textSecondary: {
     color: "white",
-    marginLeft: 10,
-    fontSize: 25,
+    fontSize: 18,
+    marginBottom: 5,
+    textAlign: "center", // Center-align the text
+    marginTop: 30,
   },
-  textShadow: {
-    textShadowColor: "rgba(0, 0, 0, 0.80)",
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 10,
+  email: {
+    textDecorationLine: "underline",
   },
 });
