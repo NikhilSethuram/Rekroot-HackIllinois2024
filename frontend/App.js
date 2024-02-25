@@ -53,22 +53,18 @@ const SignInScreen = ({ navigation }) => {
 // UploadResumeScreen Component
 const UploadResumeScreen = ({ navigation }) => {
   const handleUploadPress = async () => {
-    try {
-      let result = await DocumentPicker.getDocumentAsync({
-        type: "application/pdf",
-        copyToCacheDirectory: true,
-        multiple: false,
-      });
-
-      if ((result.type = "success")) {
-        const fileName = result.name ?? "Unknown"; // Fallback to 'Unknown' if result.name is undefined
-        const fileSize = result.size ?? "Unknown"; // Fallback to 'Unknown' if result.size is undefined
-        Alert.alert("File Picked", `Name: ${fileName}\nSize: ${fileSize}`);
-        navigation.navigate("JobInterests"); // Navigate to JobInterestsScreen after successful upload
-      }
-    } catch (error) {
-      console.error(error);
-      Alert.alert("Error", "An error occurred while picking the document.");
+    const result = await DocumentPicker.getDocumentAsync({
+      type: "application/pdf",
+      multiple: false,
+      copyToCacheDirectory: true
+    });
+    if (!result.cancelled) {
+      Alert.alert('File Uploaded', result.assets[0].name);
+      navigation.navigate("JobInterests")
+    } else {
+      setTimeout(() => {
+        Alert.alert('Document picked', JSON.stringify(result, null, 2));
+      }, 100);
     }
   };
 
@@ -83,7 +79,8 @@ const UploadResumeScreen = ({ navigation }) => {
       <View style={styles.content}>
         <Text style={styles.headerText}>upload your resume</Text>
         <Text style={styles.descriptionText}>
-          We’ll use it to find jobs that match your interests/skills.
+          We’ll use it to find jobs that match your interests/skills. Make sure
+          it’s readable by ATS.
         </Text>
         <View style={styles.signInFooter}>
           <TouchableOpacity
