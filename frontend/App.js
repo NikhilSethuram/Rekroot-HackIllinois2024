@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from 'react'; // Correct import statement
 import {
   StyleSheet,
   Text,
@@ -17,8 +17,13 @@ import * as DocumentPicker from "expo-document-picker";
 import { Picker } from "@react-native-picker/picker";
 import jobInterestsData from "../frontend/data/job_interests.json";
 import SwipesScreen from "./components/SwipeScreen";
+
 // SignInScreen Component
 const SignInScreen = ({ navigation }) => {
+  // State for username and password
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -27,23 +32,40 @@ const SignInScreen = ({ navigation }) => {
         start={{ x: 0.05, y: 0 }}
         end={{ x: -0.2, y: 0.1 }}
       >
-        <Text style={styles.welcomeText}>Rekroot</Text>
-        <Text style={{ color: "white" }}>Jobs now a swipe away!</Text>
+        <Text style={styles.welcomeText}>welcome to rekroot</Text>
+        <Text style={styles.welcomeSubtitle}>your next internship is now just a swipe away!</Text>
+        
+        <TextInput
+          style={styles.input}
+          placeholder="Username"
+          placeholderTextColor="#999"
+          value={username}
+          onChangeText={setUsername}
+        />
+        
+        <TextInput
+          style={styles.input}
+          placeholder="Password"
+          placeholderTextColor="#999"
+          secureTextEntry={true}
+          value={password}
+          onChangeText={setPassword}
+        />
 
         <View style={styles.signInFooter}>
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
               setTimeout(() => {
+                // Example action on pressing the sign-in button
+                // You should replace this with actual sign-in logic
+                console.log("Signing in with:", username, password);
                 navigation.navigate("UploadResume");
-              }, 2000);
+              }, 500);
             }}
           >
-            <Text style={styles.buttonText}>Authorize with LinkedIn</Text>
+            <Text style={styles.buttonText}>perfect, click here to get started</Text>
           </TouchableOpacity>
-          <Text style={styles.termsText}>
-            By signing in, you agree to our Terms and Conditions.
-          </Text>
         </View>
       </LinearGradient>
     </View>
@@ -235,38 +257,46 @@ const App = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    justifyContent: 'center',
   },
   gradient: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    width: "100%",
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
   },
   welcomeText: {
     fontSize: 30,
-    fontWeight: "bold",
-    color: "white",
-    marginBottom: 20,
-    textAlign: "center",
+    color: 'white',
+    fontWeight: 'bold',
   },
-  termsText: {
-    fontSize: 16,
-    color: "white",
-    textAlign: "center",
-    marginTop: 10,
-    marginBottom: 40,
-    marginHorizontal: 40,
+  welcomeSubtitle: {
+    color: 'white',
+    paddingBottom: 30,
+    fontWeight: '500'
+  },
+  input: {
+    width: '80%',
+    backgroundColor: 'white',
+    padding: 15,
+    marginBottom: 10,
+    borderRadius: 5,
   },
   button: {
+    backgroundColor: '#FF6347',
+    padding: 15,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+  },
+  signInFooter: {
+    marginTop: 20,
+  },
+  termsText: {
+    color: 'white',
     marginTop: 10,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 25,
-    borderWidth: 2,
-    borderColor: "white",
-    width: "80%",
-    alignItems: "center",
   },
   confirmButtonText: {
     textAlign: "center",
