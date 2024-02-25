@@ -1,0 +1,102 @@
+import React, { useState } from "react";
+import {
+  View,
+  TextInput,
+  Button,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity, // Import TouchableOpacity
+  Linking, // Import Linking
+  Alert
+} from "react-native";
+
+const ApplicationTracker = () => {
+  const [companyName, setCompanyName] = useState("");
+  const [dateApplied, setDateApplied] = useState("");
+  const [applications, setApplications] = useState([]);
+
+  const handleAddApplication = () => {
+    if (companyName && dateApplied) {
+      setApplications([...applications, { companyName, dateApplied }]);
+      setCompanyName("");
+      setDateApplied("");
+    }
+  };
+
+  const openLink = () => {
+    const email = "example@example.com"; // Use your target email address here
+    const subject = encodeURIComponent("WOULD LOVE TO INTERN FOR YOU");
+    const body = encodeURIComponent("pretty please");
+    const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
+  
+    Linking.canOpenURL(mailto)
+      .then((supported) => {
+        if (!supported) {
+          console.log("Can't handle url: " + mailto);
+        } else {
+          return Linking.openURL(mailto);
+        }
+      })
+      .catch((err) => console.error('An error occurred', err));
+  
+    Alert.alert('Email Link', mailto);
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        style={styles.input}
+        value={companyName}
+        onChangeText={setCompanyName}
+        placeholder="Company Name"
+      />
+      <TextInput
+        style={styles.input}
+        value={dateApplied}
+        onChangeText={setDateApplied}
+        placeholder="Date Applied (YYYY-MM-DD)"
+        keyboardType="numeric"
+      />
+      <Button title="Add Application" onPress={handleAddApplication} />
+      <ScrollView>
+        {applications.map((application, index) => (
+          <TouchableOpacity key={index} onPress={openLink} style={styles.applicationItem}>
+            <Text style={styles.applicationText}>
+              {application.companyName}
+            </Text>
+            <Text style={styles.applicationText}>
+              {application.dateApplied}
+            </Text>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 20,
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: "gray",
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 5,
+  },
+  applicationItem: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "gray",
+  },
+  applicationText: {
+    fontSize: 16,
+  },
+});
+
+export default ApplicationTracker;
