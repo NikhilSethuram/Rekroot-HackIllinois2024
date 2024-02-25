@@ -16,7 +16,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as DocumentPicker from "expo-document-picker";
 import { Picker } from "@react-native-picker/picker";
 import jobInterestsData from "../frontend/data/job_interests.json";
-
+import SwipesScreen from "./components/SwipeScreen";
 // SignInScreen Component
 const SignInScreen = ({ navigation }) => {
   return (
@@ -151,7 +151,7 @@ const LocationSelectScreen = ({ navigation }) => {
   const [selectedLocation, setSelectedLocation] = React.useState(null);
 
   const navigateToNewScreen = () => {
-    navigation.navigate("NewBlankScreen");
+    navigation.navigate("SwipesScreen");
   };
 
   return (
@@ -228,7 +228,7 @@ const App = () => {
           component={LocationSelectScreen}
           options={{ title: "Select Location" }}
         />
-        <Stack.Screen name="NewBlankScreen" component={NewBlankScreen} />
+        <Stack.Screen name="SwipesScreen" component={SwipesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
