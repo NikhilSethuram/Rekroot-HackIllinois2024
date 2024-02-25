@@ -6,36 +6,41 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  TouchableOpacity, // Import TouchableOpacity
+  Linking, // Import Linking
+  Alert,
 } from "react-native";
 
-const ApplicationTracker = () => {
+const ApplicationTracker = ({ applications, setApplications }) => {
   const [companyName, setCompanyName] = useState("");
   const [dateApplied, setDateApplied] = useState("");
-  const [applications, setApplications] = useState([
-    {
-      companyName: "Warp",
-      dateApplied: "2023-02-25", // Example date
-    },
-    {
-      companyName: "BerriAI",
-      dateApplied: "2023-02-25", // Example date
-    },
-    {
-      companyName: "SpecCheck",
-      dateApplied: "2023-02-25",
-    },
-  ]);
+  //const [applications, setApplications] = useState([]);
+
   const handleAddApplication = () => {
     if (companyName && dateApplied) {
-      setApplications([
-        ...applications,
-        { companyName, dateApplied, email, description },
-      ]);
+      setApplications([...applications, { companyName, dateApplied }]);
       setCompanyName("");
       setDateApplied("");
-      setEmail("");
-      setDescription("");
     }
+  };
+
+  const openLink = (application) => {
+    const email = application.email; // Use your target email address here
+    const subject = encodeURIComponent("WOULD LOVE TO INTERN FOR YOU");
+    const body = encodeURIComponent("pretty please");
+    const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
+
+    Linking.canOpenURL(mailto)
+      .then((supported) => {
+        if (!supported) {
+          console.log("Can't handle url: " + mailto);
+        } else {
+          return Linking.openURL(mailto);
+        }
+      })
+      .catch((err) => console.error("An error occurred", err));
+
+    Alert.alert("Email Link", mailto);
   };
 
   return (
@@ -56,14 +61,18 @@ const ApplicationTracker = () => {
       <Button title="Add Application" onPress={handleAddApplication} />
       <ScrollView>
         {applications.map((application, index) => (
-          <View key={index} style={styles.applicationItem}>
+          <TouchableOpacity
+            key={index}
+            onPress={() => openLink(application)}
+            style={styles.applicationItem}
+          >
             <Text style={styles.applicationText}>
               {application.companyName}
             </Text>
             <Text style={styles.applicationText}>
               {application.dateApplied}
             </Text>
-          </View>
+          </TouchableOpacity>
         ))}
       </ScrollView>
     </View>
