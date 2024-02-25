@@ -26,7 +26,7 @@ export default function BottomBar({
           name="heart"
           size={27}
           color="#50C878"
-          //   onPress={handleLikePress}
+          onPress={handleLikePress}
         ></FontAwesome>
       </TouchableOpacity>
       <View />
