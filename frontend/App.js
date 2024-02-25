@@ -8,14 +8,14 @@ import {
   Alert,
   Platform,
   ScrollView,
+  TextInput,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
 import * as DocumentPicker from "expo-document-picker";
 import { Picker } from "@react-native-picker/picker";
-import jobInterestsData from "../frontend/data/job_interests.json"; // Ensure this path matches where your job_interests.json is located
-import Icon from "react-native-vector-icons/FontAwesome";
+import jobInterestsData from "../frontend/data/job_interests.json";
 
 // SignInScreen Component
 const SignInScreen = ({ navigation }) => {
@@ -29,12 +29,17 @@ const SignInScreen = ({ navigation }) => {
       >
         <Text style={styles.welcomeText}>Rekroot</Text>
         <Text style={{ color: "white" }}>Jobs now a swipe away!</Text>
+
         <View style={styles.signInFooter}>
           <TouchableOpacity
             style={styles.button}
-            onPress={() => navigation.navigate("UploadResume")}
+            onPress={() => {
+              setTimeout(() => {
+                navigation.navigate("UploadResume");
+              }, 2000);
+            }}
           >
-            <Text style={styles.buttonText}>sign in with linkedin</Text>
+            <Text style={styles.buttonText}>Authorize with LinkedIn</Text>
           </TouchableOpacity>
           <Text style={styles.termsText}>
             By signing in, you agree to our Terms and Conditions.
@@ -78,8 +83,7 @@ const UploadResumeScreen = ({ navigation }) => {
       <View style={styles.content}>
         <Text style={styles.headerText}>upload your resume</Text>
         <Text style={styles.descriptionText}>
-          We’ll use it to find jobs that match your interests/skills. Make sure
-          it’s readable by ATS.
+          We’ll use it to find jobs that match your interests/skills.
         </Text>
         <View style={styles.signInFooter}>
           <TouchableOpacity
