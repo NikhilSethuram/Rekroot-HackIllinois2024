@@ -1,0 +1,39 @@
+// JobDetailScreen Component
+const JobDetailScreen = ({ navigation }) => {
+  return (
+    <View style={styles.jobDetailContainer}>
+      <View style={styles.header}>
+        <Text style={styles.applyText}>apply</Text>
+      </View>
+      <View style={styles.card}>
+        <Text style={[styles.companyNameText, styles.boldText]}>company name</Text>
+        <Text style={styles.jobDetailText}>
+          this company is dedicated to the pursuit of quantum technology. here are some common facts:
+          {'\n'}{'\n'}
+          <Text style={styles.boldText}>role name:</Text> swe interm
+          {'\n'}
+          <Text style={styles.boldText}>role description:</Text> get cooked and cook
+          {'\n'}{'\n'}
+          <Text style={styles.boldText}>experience required:</Text> bachelors degree and shit
+          {'\n'}
+          <Text style={styles.boldText}>desired skills:</Text> HTML, CSS, Tailwind, React
+          {'\n'}{'\n'}
+          <Text style={styles.boldText}>pay range:</Text> 12-14 dollars an hour
+          {'\n'}
+          <Text style={styles.boldText}>employees:</Text> 10,000+
+          {'\n'}
+          <Text style={styles.boldText}>alumni:</Text> 10 school alumni work there
+          {'\n'}{'\n'}
+          <Text style={styles.boldText}>notes:</Text>
+          {'\n'}
+          - covid vaccine required
+          {'\n'}
+          - eeo, aa
+        </Text>
+        <TouchableOpacity style={styles.learnMoreButton} onPress={() => {/* navigation or action to learn more */}}>
+          <Text style={styles.learnMoreText}>learn more about the role</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+};
