@@ -1,0 +1,107 @@
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import { LinearGradient } from 'expo-linear-gradient';
+import { Picker } from '@react-native-picker/picker';
+
+const App = () => {
+  const [selectedLocation, setSelectedLocation] = useState();
+
+  const handlePressContinue = () => {
+    // Logic when continue is pressed
+    console.log('Continue button pressed.');
+  };
+
+  return (
+    <NavigationContainer>
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity onPress={() => console.log('Back button pressed')} style={styles.backButton}>
+        <Text style={styles.backButtonText}>{"<"}</Text>
+      </TouchableOpacity>
+      <View style={styles.content}>
+        <Text style={styles.headerText}>where do you want to work?</Text>
+        <Picker
+          selectedValue={selectedLocation}
+          style={styles.picker}
+          onValueChange={(itemValue, itemIndex) => setSelectedLocation(itemValue)}
+          mode="dropdown" // Android only
+        >
+          <Picker.Item label="New York" value="ny" />
+          <Picker.Item label="San Francisco" value="sf" />
+          <Picker.Item label="Seattle" value="sea" />
+          {/* Add more locations as Picker.Items */}
+        </Picker>
+      </View>
+      <View style={styles.footer}>
+        <TouchableOpacity onPress={handlePressContinue} style={styles.buttonContainer}>
+          <LinearGradient
+            colors={['#FF5F05', '#FFA07A']}
+            style={styles.gradientButton}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+          >
+            <Text style={styles.buttonText}>continue</Text>
+          </LinearGradient>
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
+    </NavigationContainer>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  backButton: {
+    marginTop: 10,
+    marginLeft: 10,
+  },
+  backButtonText: {
+    fontSize: 30,
+    color: '#000000',
+  },
+  content: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+  },
+  headerText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#000000',
+    marginBottom: 20,
+  },
+  picker: {
+    width: '100%',
+    ...Platform.select({
+      android: {
+        color: '#000000',
+      },
+    }),
+  },
+  footer: {
+    padding: 10,
+    paddingBottom: 20, // Give some space from the bottom edge
+  },
+  buttonContainer: {
+    borderRadius: 25, // Match the borderRadius of the LinearGradient
+    overflow: 'hidden',
+  },
+  gradientButton: {
+    paddingVertical: 15,
+    paddingHorizontal: 35,
+    borderRadius: 25, // Apply a border radius for rounded corners
+    alignItems: 'center', // Center the text horizontally
+    justifyContent: 'center', // Center the text vertically
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+});
+
+export default App;
