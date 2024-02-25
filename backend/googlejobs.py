@@ -1,6 +1,6 @@
 import requests
 
-def fetch_jobs(search_query, location, api_key):
+def fetch_jobs(search_query, location):
     """
     Fetches jobs from Google Jobs via SerpApi.
 
@@ -18,10 +18,13 @@ def fetch_jobs(search_query, location, api_key):
         "q": search_query,
         "location": location,
         "hl": "en",  # Change this as needed for language
-        "api_key": api_key
+        "api_key": "8be06802deaa1ad7513b6aa1667159d3f79a3557da8983487115421dd151a10d"
     }
 
     response = requests.get(base_url, params=params)
+
+        # for s in response.json()['jobs_results'][0]['description']:
+    #     print(s)
 
     if response.status_code == 200:
         return response.json()
@@ -32,8 +35,8 @@ def fetch_jobs(search_query, location, api_key):
 # Example usage
 search_query = "software engineer"  # Change this to your job interest
 location = "New York, NY"  # Change this to your preferred location
-api_key = "8be06802deaa1ad7513b6aa1667159d3f79a3557da8983487115421dd151a10d"  # Replace with your actual SerpApi API key
+# api_key = "8be06802deaa1ad7513b6aa1667159d3f79a3557da8983487115421dd151a10d"  # Replace with your actual SerpApi API key
 
-jobs_data = fetch_jobs(search_query, location, api_key)
+jobs_data = fetch_jobs(search_query, location)
 print(jobs_data)
 
