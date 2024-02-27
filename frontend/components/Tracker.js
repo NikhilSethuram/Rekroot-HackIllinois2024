@@ -26,8 +26,20 @@ const ApplicationTracker = ({ applications, setApplications }) => {
 
   const openLink = (application) => {
     const email = application.email; // Use your target email address here
-    const subject = encodeURIComponent("WOULD LOVE TO INTERN FOR YOU");
-    const body = encodeURIComponent("pretty please");
+    const subject = encodeURIComponent(
+      "Application for the Software Engineer Position at Warp - Nikhil Sethuram, Computer Science Undergraduate."
+    );
+    const body = encodeURIComponent(`Dear Recruiter,
+
+    I am writing to express my deep interest in the Software Engineer position at Warp. As a recent graduate from the University of Wisconsin, Madison, with a B.S. in Computer Science and Data Science, I am excited about the opportunity to apply my skills and experiences to contribute to Warp's mission.
+    What immediately drew me to Warp is your commitment to providing a seamless online supermarket experience for South Asians living in the US. As a South Asian myself, I understand the importance of this service and am eager to contribute to a company that values diversity and inclusivity.
+    Throughout my academic journey and professional internships, I have honed my skills in various programming languages, web development, and machine learning frameworks. For instance, at The Level Company, I created large language models using GPT-4 and Python to generate effective and personalized messages, significantly increasing response rates. I also automated email outreach campaigns, leading to a 50% increase in re-engagement rates. I believe these experiences have equipped me with the technical expertise and innovative mindset required for this role.
+    I am particularly interested in leveraging my skills to enhance the user experience and efficiency of your platform. Given my experience with automating processes and creating personalized experiences, I am confident that I can contribute to improving Warp's online supermarket platform.
+    I would appreciate the opportunity to further discuss how my background and skills align with your needs. I am eager to learn more about the role and how I can contribute to Jaldi's mission.
+    Thank you for considering my application. I look forward to the possibility of contributing to Warp's mission.
+    
+    Best Regards,
+    Nikhil`);
     const mailto = `mailto:${email}?subject=${subject}&body=${body}`;
 
     Linking.canOpenURL(mailto)
