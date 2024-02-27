@@ -18,7 +18,7 @@ def fetch_jobs(search_query, location):
         "q": search_query,
         "location": location,
         "hl": "en",  # Change this as needed for language
-        "api_key": "8be06802deaa1ad7513b6aa1667159d3f79a3557da8983487115421dd151a10d"
+        "api_key": "8be06802deaa1ad7513b6aa1667159d3f79a3557da8983487115421dd151a10d10099992233"
     }
 
     response = requests.get(base_url, params=params)
@@ -35,7 +35,6 @@ def fetch_jobs(search_query, location):
 # Example usage
 search_query = "software engineer"  # Change this to your job interest
 location = "New York, NY"  # Change this to your preferred location
-# api_key = "8be06802deaa1ad7513b6aa1667159d3f79a3557da8983487115421dd151a10d"  # Replace with your actual SerpApi API key
 
 jobs_data = fetch_jobs(search_query, location)
 print(jobs_data)
